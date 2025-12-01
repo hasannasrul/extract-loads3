@@ -1,9 +1,10 @@
 import argparse
 import time
 import boto3
-from sources.sftp_source import get_sftp_file
-from upload.s3_upload import multipart_upload
-from upload.validation import compare_sha256_with_s3
+from extract_load_s3.sources.sftp_source import get_sftp_file
+from extract_load_s3.upload.s3_upload import multipart_upload
+from extract_load_s3.upload.validation import compare_sha256_with_s3
+
 
 # Placeholder imports for future flows
 # from sources.oracle_source import stream_oracle_to_file

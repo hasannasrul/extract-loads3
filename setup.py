@@ -15,5 +15,4 @@ setup(
     ],
     python_requires=">=3.9",
     license="MIT",
-    include_package_data=True,
 )
