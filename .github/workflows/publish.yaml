@@ -1,14 +1,14 @@
 name: Publish Python Package
 
-# Manual trigger only
 on:
-  workflow_dispatch:  # Manual trigger in GitHub Actions UI
+  workflow_dispatch:
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+
     steps:
-      # 1️⃣ Checkout the repo
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -16,22 +16,29 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
-      # 3️⃣ Install build tools
-      - name: Install build tools
+      # 3️⃣ Clean previous builds
+      - name: Remove old build artifacts
+        run: |
+          rm -rf build/
+          rm -rf dist/
+          rm -rf *.egg-info/
+
+      # 4️⃣ Install required build tools
+      - name: Install build dependencies
         run: |
           python -m pip install --upgrade pip
           pip install build twine
 
-      # 4️⃣ Build wheel and source distribution
+      # 5️⃣ Build package
       - name: Build package
-        run: python -m build  # This reads version from setup.py automatically
+        run: python -m build
 
-      # 5️⃣ Publish to PyPI
+      # 6️⃣ Upload to PyPI
       - name: Publish to PyPI
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}  # your PyPI API token
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           twine upload dist/* --verbose
