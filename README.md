@@ -1,7 +1,11 @@
 # 📦 extract-loads3
 
-A simple, extensible Python utility to **extract data from different sources and load the original files into Amazon S3**.
+A simple, extensible Python utility to **extract data from different sources and load the original files into Amazon S3** It can be used in different data pipeline orchestration tool like airflow.
 
+**Pypi repo link**
+```
+https://pypi.org/project/extract-loads3/
+```
 Currently supported:
 
 - **SFTP → S3** (fully functional)
