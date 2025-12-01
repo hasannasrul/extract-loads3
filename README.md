@@ -5,7 +5,7 @@ A simple, extensible Python utility to **extract data from different sources and
 **Pypi repo link**
 
 ```
-https://pypi.org/project/extract-loads3/
+https://pypi.org/project/extract-load-s3/
 ```
 
 Currently supported:
