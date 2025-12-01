@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "extract_load_s3"
-version = "1.0.5"
+version = "1.0.6"
 description = "Unified data ingestion framework to move datasets from SFTP/Oracle/Postgres/Snowflake to S3."
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.9"
@@ -12,6 +12,9 @@ dependencies = [
     "boto3>=1.41.5",
     "paramiko>=4.0.0",
 ]
+
+[project.scripts]
+extract-load-s3 = "extract_load_s3.main:main"
 
 [dependency-groups]
 dev = [
