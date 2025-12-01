@@ -1,4 +1,4 @@
-# 📦 extract-loads3
+# 📦 extract-load-s3
 
 A simple, extensible Python utility to **extract data from different sources and load the original files into Amazon S3** It can be used in different data pipeline orchestration tool like airflow.
 
@@ -23,7 +23,7 @@ pip install extract-loads3
 once installed run
 
 ```bash
-extract-loads3 \
+extract-load-s3 \
     --flow sftp_to_s3 \
     --file_name "/path/to/file.zip" \
     --s3_bucket raw \
