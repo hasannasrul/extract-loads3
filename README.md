@@ -3,9 +3,11 @@
 A simple, extensible Python utility to **extract data from different sources and load the original files into Amazon S3** It can be used in different data pipeline orchestration tool like airflow.
 
 **Pypi repo link**
+
 ```
 https://pypi.org/project/extract-loads3/
 ```
+
 Currently supported:
 
 - **SFTP → S3** (fully functional)
@@ -17,7 +19,7 @@ More data sources (Postgres, Oracle, Snowflake, etc.) will be added soon.
 ## 🚀 Installation
 
 ```bash
-pip install extract-loads3
+pip install extract-load-s3
 ```
 
 once installed run
@@ -50,8 +52,6 @@ you’re using LocalStack or MinIO
 | `--aws_endpoint_url`      | No                | Custom S3 endpoint (LocalStack, MinIO, custom S3 gateways)   |
 | `--db_conn_str`           | No                | Future DB connection string                                  |
 
-
-
 ## 1. SFTP → S3
 
 This flow:
@@ -66,6 +66,7 @@ Validates file integrity via SHA256 checksum <br>
 ```
 
 to use with localstacl
+
 ```
 --aws_endpoint_url http://localhost:4566 \
 --aws_access_key_id test \
