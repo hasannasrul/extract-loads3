@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="extract_load_s3",
-    version="1.0.2",
+    version="1.0.3",
     description="Unified data ingestion framework to move datasets from SFTP/Oracle/Postgres/Snowflake to S3.",
     author="Hasan",
     author_email="hasanali242424@gmail.com",
