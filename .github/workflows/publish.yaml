@@ -34,4 +34,4 @@ jobs:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}  # your PyPI API token
         run: |
-          twine upload dist/*
+          twine upload dist/* --verbose
