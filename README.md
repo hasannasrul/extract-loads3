@@ -32,33 +32,43 @@ extract-loads3 \
     --ssh_password your_password
 ```
 
-| Argument                  | Required          | Description                              |
-| ------------------------- | ----------------- | ---------------------------------------- |
-| `--flow`                  | Yes               | Which flow to run (`sftp_to_s3`, etc.)   |
-| `--file_name`             | Yes               | Remote or local file path                |
-| `--s3_bucket`             | Yes               | Destination S3 bucket                    |
-| `--s3_key`                | No                | Custom S3 key prefix                     |
-| `--ssh_host`              | Required for SFTP | SFTP server address                      |
-| `--ssh_user`              | Required for SFTP | SFTP username                            |
-| `--ssh_password`          | Required for SFTP | SFTP password                            |
-| `--aws_access_key_id`     | No                | AWS key (default: `test` for Localstack) |
-| `--aws_secret_access_key` | No                | AWS secret (default: `test`)             |
-| `--aws_endpoint_url`      | No                | AWS endpoint or Localstack               |
+You do not need to pass AWS credentials or endpoint URL unless:
+you want to override environment/IAM role credentials
+you’re using LocalStack or MinIO
+
+| Argument                  | Required?         | Description                                                  |
+| ------------------------- | ----------------- | ------------------------------------------------------------ |
+| `--flow`                  | **Yes**           | Which ingestion flow to run (`sftp_to_s3`, more coming soon) |
+| `--file_name`             | **Yes** for SFTP  | Remote SFTP file path                                        |
+| `--s3_bucket`             | **Yes**           | Destination S3 bucket                                        |
+| `--s3_key`                | No                | Custom S3 key / prefix; if omitted, timestamp is appended    |
+| `--ssh_host`              | Required for SFTP | SFTP server host                                             |
+| `--ssh_user`              | Required for SFTP | SFTP username                                                |
+| `--ssh_password`          | Required for SFTP | SFTP password                                                |
+| `--aws_access_key_id`     | No                | AWS key; if omitted, boto3 uses IAM role / env vars          |
+| `--aws_secret_access_key` | No                | AWS secret                                                   |
+| `--aws_endpoint_url`      | No                | Custom S3 endpoint (LocalStack, MinIO, custom S3 gateways)   |
+| `--db_conn_str`           | No                | Future DB connection string                                  |
+
 
 
 ## 1. SFTP → S3
 
 This flow:
 
-Connects to an SFTP server
-
-Streams the remote file
-
-Uploads the file to S3 using multipart upload
-
-Validates file integrity via SHA256 checksum
+Connects to an SFTP server <br>
+Streams the remote file <br>
+Uploads the file to S3 using multipart upload <br>
+Validates file integrity via SHA256 checksum <br>
 
 ```bash
 --flow sftp_to_s3
 ```
 
+to use with localstacl
+```
+--aws_endpoint_url http://localhost:4566 \
+--aws_access_key_id test \
+--aws_secret_access_key test
+
+```
