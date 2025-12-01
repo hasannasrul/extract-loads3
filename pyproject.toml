@@ -1,9 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "extract-loads3"
-version = "1.0.2"
-description = "Add your description here"
+name = "extract_load_s3"
+version = "1.0.3"
+description = "Unified data ingestion framework to move datasets from SFTP/Oracle/Postgres/Snowflake to S3."
 readme = "README.md"
-requires-python = "~=3.9.6"
+readme-content-type = "text/markdown"
+requires-python = ">=3.9"
 dependencies = [
     "boto3>=1.41.5",
     "paramiko>=4.0.0",
